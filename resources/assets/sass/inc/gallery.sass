@@ -1,0 +1,37 @@
+section#gallery
+
+    form
+        @media(max-width: $nav-breakpoint)
+            margin-top: 40px
+
+    .gallery__images
+        margin: 40px auto 0 auto
+        text-align: center
+
+        .gallery__image
+            display: inline-block
+            margin-bottom: 20px
+
+            a
+                text-decoration: none
+
+                i.fa-remove
+                    display: block
+                    font-size: 25px
+                    color: red
+                    border: 1px solid pink
+                    transition: all 300ms ease-in-out
+
+                    &:hover
+                        border: 1px solid red
+
+                img
+                    width: 200px
+                    height: 200px
+                    transform: scale(.95)
+                    filter: grayscale(.3)
+                    transition: all 300ms ease-in-out
+
+                    &:hover
+                        filter: grayscale(0)
+                        transform: scale(1)

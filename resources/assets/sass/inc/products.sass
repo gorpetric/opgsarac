@@ -1,0 +1,116 @@
+section.products
+    p
+        color: $grey
+
+    .products__list
+        margin-top: 40px
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+
+        .product
+            width: 220px
+            margin: 20px
+            text-align: center
+            overflow: hidden
+
+            img
+                height: 200px
+                transform: scale(1)
+                transition: all 300ms ease-in-out
+
+                &:hover
+                    transform: scale(1.2)
+
+    .products__product
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-items: center
+        margin: 20px 0
+
+        .products__product-image
+            width: 40%
+            margin: 0 auto
+            text-align: center
+
+        .products__product-info
+            width: 60%
+            padding: 0 20px
+
+    .products__otherImages
+        margin: 10px 0
+
+        .products__otherImages-otherImage
+            display: inline-block
+            width: 17%
+            margin: 10px
+            text-align: center
+            transition: all 300ms ease-in-out
+
+            @media(max-width: 730px)
+                width: 23%
+
+            @media(max-width: 600px)
+                width: 40%
+
+            @media(max-width: 415px)
+                display: block
+                margin: 10px auto
+
+            a.delete-link
+                display: block
+                margin: 0 auto
+                color: red
+                width: 90%
+                border: 1px solid pink
+                transition: all 300ms ease-in-out
+
+                &:hover
+                    border: 1px solid red
+
+            img
+                height: 100px
+
+    @media(max-width: $nav-breakpoint)
+        .products__list
+            display: block
+            .product
+                width: 100%
+
+        .products__product
+            display: block
+
+            .products__product-image
+                width: auto
+
+            .products__product-info
+                width: 100%
+
+    .product__actions
+        font-size: 25px
+        text-align: center
+        width: 50%
+        margin: 0 auto 20px auto
+
+        @media(max-width: $nav-breakpoint)
+            margin-top: 20px
+            width: 100%
+
+        i
+            display: inline-block
+            width: 45%
+            transition: all 300ms ease-in-out
+
+            &.fa-edit
+                color: blue
+                border: 1px solid lightblue
+                &:hover
+                    border: 1px solid blue
+
+            &.fa-remove
+                color: red
+                border: 1px solid pink
+                &:hover
+                    border: 1px solid red

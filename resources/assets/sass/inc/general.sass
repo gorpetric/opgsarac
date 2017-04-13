@@ -1,0 +1,53 @@
+.wrapper
+    width: $container-width
+    max-width: 100%
+    margin: 0 auto
+    background: white
+    height: 100%
+    min-height: 100vh
+    box-shadow: 0px 1px 10px 0px rgba(0,0,0,.4)
+
+.container
+    padding: 20px
+
+    @media(max-width: $nav-breakpoint)
+        padding-top: 50px
+
+img
+    max-width: 100%
+
+a
+    color: $green
+
+hr
+    background-color: rgba(0,0,0,0.2)
+    height: 1px
+    border: 0
+
+.text-center
+    text-align: center
+
+footer
+    border-top: 1px solid rgba(0,0,0,0.2)
+    padding: 10px
+    margin-top: 40px
+    text-align: center
+    color: $grey
+    font-size: 10px
+
+input
+    max-width: 100%
+    margin: 5px 0
+    padding: 5px
+
+    @media(max-width: $nav-breakpoint)
+        display: block
+        width: 100%
+
+        &[type='submit']
+            width: auto
+
+textarea
+    resize: vertical
+    width: 100%
+    padding: 5px

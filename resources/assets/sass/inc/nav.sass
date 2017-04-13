@@ -1,0 +1,61 @@
+header
+    position: relative
+    z-index: $nav-z
+
+    img
+        width: 100%
+
+        &.logo
+            width: auto
+            position: absolute
+            top: 10%
+            left: 5%
+            width: 140px
+
+    nav
+        width: 100%
+        text-align: center
+        background: black
+        position: relative
+        top: -5px
+
+        .toggle
+            fill: white
+            cursor: pointer
+            display: none
+
+        .links
+            position: relative
+            background: black
+
+            a
+                text-decoration: none
+                color: white
+                display: inline-block
+                padding: 10px
+
+                &:hover
+                    background: transparentize(green, .5)
+
+                &.active
+                    background: transparentize(green, .2)
+
+    @media(max-width: $nav-breakpoint)
+        img
+            display: none
+
+        nav
+            position: fixed
+            top: 0
+
+            .toggle
+                display: block
+
+            .links
+                display: none
+
+                a
+                    display: block
+
+                &.toggled
+                    display: block

@@ -1,0 +1,27 @@
+section#contact
+    .contact__upper
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        flex-wrap: wrap
+        margin: 20px 0
+
+        .contact__info, .contact__form
+            margin: 20px
+            width: 45%
+
+            @media(max-width: 840px)
+                width: 100%
+
+        .contact__info
+            color: $grey
+            font-weight: bold
+            p
+                span
+                    font-weight: normal
+                a
+                    img
+                        filter: grayscale(1)
+                        transition: all 300ms ease-in-out
+                        &:hover
+                            filter: grayscale(0)
