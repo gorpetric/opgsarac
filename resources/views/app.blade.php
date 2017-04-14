@@ -32,7 +32,7 @@
 @include('partials.nav')
 <div class='container'>
 @yield('content')
-<footer>Copyright &copy; 2016 OPG Sarac</footer>
+<footer>Copyright &copy; 2016-2017 OPG Sarac</footer>
 </div>
 </div>
 <script src='{{ asset("js/app.js") }}'></script>
