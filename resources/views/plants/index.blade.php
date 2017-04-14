@@ -15,7 +15,7 @@
             @foreach($plants as $plant)
                 <div class="plant">
                     <p class='plant__name'>{{ $plant->name }}</p>
-                    <p class='plant__description'>{{ $plant->description }}</p>
+                    <p class='plant__description'>{!! nl2br(e($plant->description)) !!}</p>
                     <img class='plant__image' src="{{ asset($plant->image) }}">
                     <div class="actions">
                         <a title='Uredi podatke biljke iznad' href="{{ route('plants.edit', $plant) }}"><i class="fa fa-edit"></i></a>
@@ -27,7 +27,7 @@
             @foreach($plants as $plant)
                 <div class="plant">
                     <p class='plant__name'>{{ $plant->name }}</p>
-                    <p class='plant__description'>{{ $plant->description }}</p>
+                    <p class='plant__description'>{!! nl2br(e($plant->description)) !!}</p>
                     <img class='plant__image' src="{{ asset($plant->image) }}">
                 </div>
             @endforeach
