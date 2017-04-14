@@ -12,7 +12,7 @@ npm-debug.log
 Envoy.blade.php
 composer.phar
 /public/google8b9ef90a2e687cc6.html
-.htaccess
+/.htaccess
 public/img/gallery/*
 !public/img/gallery/.gitkeep
 public/img/plants/*
