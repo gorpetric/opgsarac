@@ -13,3 +13,9 @@ Envoy.blade.php
 composer.phar
 /public/google8b9ef90a2e687cc6.html
 .htaccess
+public/img/gallery/*
+!public/img/gallery/.gitkeep
+public/img/plants/*
+!public/img/plants/.gitkeep
+public/img/products/*
+!public/img/products/.gitkeep
