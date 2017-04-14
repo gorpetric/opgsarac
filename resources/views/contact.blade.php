@@ -26,7 +26,7 @@
             </form>
         </div>
     </div>
-    <div class="contact__map">
+    <div class='contact__map'>
         <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2751.6603073027077!2d16.446662715819684!3d46.395962078807074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4768ad9717b6d093%3A0x3bec4a2c6a56f9de!2sUl.+Slavka+Kolara+43%2C+40000%2C+%C4%8Cakovec%2C+Croatia!5e0!3m2!1sen!2sus!4v1468488236059' width='100%' height='300' frameborder='0' style='border:0' allowfullscreen></iframe>
     </div>
 </section>

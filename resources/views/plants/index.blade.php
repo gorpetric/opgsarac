@@ -16,7 +16,7 @@
                 <div class='plant'>
                     <p class='plant__name'>{{ $plant->name }}</p>
                     <p class='plant__description'>{!! nl2br(e($plant->description)) !!}</p>
-                    <img class='plant__image' src="{{ asset($plant->image) }}">
+                    <img class='plant__image' src='{{ asset($plant->image) }}'>
                     <div class='actions'>
                         <a title='Uredi podatke biljke iznad' href='{{ route("plants.edit", $plant) }}'><i class='fa fa-edit'></i></a>
                         <a title='Obriši biljku iznad' class='delete-link' href='{{ route("plants.deletePlant", $plant) }}' data-swal-text='Akcija je nepovratna'><i class='fa fa-remove'></i></a>

@@ -5,7 +5,7 @@
 @section('content')
 {!! Auth::check() ? '<p>Dobrodošli, <strong>'.Auth::user()->getFullName().'</strong></p><hr>' : ''  !!}
 <h3 class='text-center'>Ovdje možete saznati čime se bavi naše gospodarsto</h3>
-<p class='text-center home-info'>Naše proizvode možete kupiti na lokalnoj tržnici u Čakovcu i na našoj kućnoj adresi. Našu aktualnu ponudu možete vidjeti <a href="{{ route('products.index') }}">ovdje</a>.</p>
+<p class='text-center home-info'>Naše proizvode možete kupiti na lokalnoj tržnici u Čakovcu i na našoj kućnoj adresi. Našu aktualnu ponudu možete vidjeti <a href='{{ route("products.index") }}'>ovdje</a>.</p>
 <img class='home01' src='{{ asset("img/home01.jpg") }}'>
 <div class='home-grid'>
     <div class='item'>
