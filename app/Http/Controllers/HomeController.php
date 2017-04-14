@@ -83,6 +83,7 @@ class HomeController extends Controller
             'email' => 'required|email',
             'title' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required|recaptcha',
         ]);
 
         Mail::send('email.contact', ['data' => $request->all()], function($m) use($request) {
