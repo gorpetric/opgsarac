@@ -58,7 +58,7 @@ class ProductsController extends Controller
     public function getDeleteProduct(Product $product)
     {
         foreach($product->images as $image){
-            unlink(public_path($image->name));
+            if(file_exists(public_path($image->name))) unlink(public_path($image->name));
             $image->delete();
         }
         $product->delete();
@@ -84,7 +84,7 @@ class ProductsController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            unlink(public_path($product->mainImage()->name));
+            if(file_exists(public_path($product->mainImage()->name))) unlink(public_path($product->mainImage()->name));
             $path = 'img/products';
             $name = uniqid() .'.'. $request->file('image')->guessClientExtension();
             $image = $path .'/'. $name;
@@ -145,7 +145,7 @@ class ProductsController extends Controller
             return redirect()->route('home');
         }
 
-        unlink(public_path($other_image->name));
+        if(file_exists(public_path($other_image->name))) unlink(public_path($other_image->name));
         $other_image->delete();
 
         notify()->flash('Slika uspješno obrisana', 'success', [

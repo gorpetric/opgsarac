@@ -58,7 +58,7 @@ class PlantsController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            unlink(public_path($plant->image));
+            if(file_exists(public_path($plant->image))) unlink(public_path($plant->image));
             $path = 'img/plants';
             $name = uniqid() .'.'. $request->file('image')->guessClientExtension();
             $image = $path .'/'. $name;
@@ -82,7 +82,7 @@ class PlantsController extends Controller
 
     public function getDeletePlant(Plant $plant)
     {
-        unlink(public_path($plant->image));
+        if(file_exists(public_path($plant->image))) unlink(public_path($plant->image));
         $plant->delete();
 
         notify()->flash('Biljka uspješno obrisana', 'success', [

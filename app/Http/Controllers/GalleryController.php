@@ -41,7 +41,7 @@ class GalleryController extends Controller
 
     public function getDeleteImage(Gallery $image)
     {
-        unlink(public_path($image->path));
+        if(file_exists(public_path($image->path))) unlink(public_path($image->path));
         $image->delete();
 
         notify()->flash('Slika uspješno obrisana', 'success', [
