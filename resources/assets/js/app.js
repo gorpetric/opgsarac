@@ -1,5 +1,7 @@
 require('./bootstrap');
 
+window.Vue = require('vue');
+
 require('./lightbox');
 require('./sweetalert');
 require('./stuff');

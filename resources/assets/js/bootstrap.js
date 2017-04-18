@@ -7,15 +7,9 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
-
-/**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
- */
-
-window.Vue = require('vue');
+try {
+    window.$ = window.jQuery = require('jquery');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
