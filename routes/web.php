@@ -107,6 +107,36 @@ Route::get('proizvodi/{product}/obrisi-sliku/{other_image_id}', [
     'middleware' => 'roles',
     'roles' => ['Admin', 'Moderator'],
 ]);
+Route::post('proizvodi/{product}/novo-pakiranje', [
+    'uses' => 'ProductsController@postNewPackage',
+    'as' => 'products.newPackage',
+    'middleware' => 'roles',
+    'roles' => ['Admin', 'Moderator'],
+]);
+Route::get('proizvodi/{product}/obrisi-pakiranje/{package_id}', [
+    'uses' => 'ProductsController@getDeletePackage',
+    'as' => 'products.deletePackage',
+    'middleware' => 'roles',
+    'roles' => ['Admin', 'Moderator'],
+]);
+
+// basket
+Route::get('kosarica', [
+    'uses' => 'BasketController@index',
+    'as' => 'basket.index',
+]);
+Route::post('kosarica/dodaj-pakiranje/{productPackage}', [
+    'uses' => 'BasketController@addProductPackage',
+    'as' => 'basket.addProductPackage',
+]);
+Route::get('kosarica/obrisi-pakiranje/{productPackageID}', [
+    'uses' => 'BasketController@removeProductPackage',
+    'as' => 'basket.removeProductPackage',
+]);
+Route::post('kosarica/osvjezi-pakiranje/{productPackageID}', [
+    'uses' => 'BasketController@updateProductPackage',
+    'as' => 'basket.updateProductPackage',
+]);
 
 // gallery
 Route::get('galerija', [

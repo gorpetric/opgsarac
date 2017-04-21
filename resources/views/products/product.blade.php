@@ -19,6 +19,16 @@
             <h3>{{ $product->name }}</h3>
             <p>{!! nl2br(e($product->description)) !!}</p>
         </div>
+        <div class='products__product-packages'>
+            @foreach($product->packages as $package)
+                <form action='{{ route("basket.addProductPackage", $package) }}' method='POST' autocomplete='off'>
+                    {{ $package->package }} - {{ number_format($package->priceHRK, 2, ',', '.') }} HRK
+                    <input type='text' name='{{ "quantity" . $package->id }}' size=2 maxlength=2 value='{{ Request::old("quantity" . $package->id) ?: "1" }}' class='{{ $errors->has("quantity" . $package->id) ? "has-error" : "" }}'>
+                    <input type='submit' value='Dodaj u košaricu'>
+                    {{ csrf_field() }}
+                </form>
+            @endforeach
+        </div>
     </div>
     @if($product->otherImages()->count())
         <hr>
@@ -43,11 +53,12 @@
         <hr>
         <form action='{{ route("products.newOtherImage", $product) }}' method='POST' autocomplete='off' enctype='multipart/form-data'>
             <label for='image'>Odaberi sliku</label>
-            <input type='file' name='image' id='image'>
+            <input type='file' name='image' id='image' class='{{ $errors->has("image") ? "has-error" : "" }}'>
             {{ csrf_field() }}
             <input type='submit' value='Dodaj sliku'>
         </form>
-        @include('partials.errors')
     @endif
+
+    @include('partials.errors')
 </section>
 @stop

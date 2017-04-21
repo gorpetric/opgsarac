@@ -8,7 +8,7 @@
     @if(Auth::check() && Auth::user()->hasAnyRole(['Admin', 'Moderator']))
         <form action='{{ Route("gallery.newImage") }}' method='POST' autocomplete='off' enctype='multipart/form-data'>
             <label for='image'>Odaberi sliku</label>
-            <input type='file' name='image' id='image'>
+            <input type='file' name='image' id='image' class='{{ $errors->has("image") ? "has-error" : "" }}'>
             {{ csrf_field() }}
             <input type='submit' value='Dodaj'>
         </form>

@@ -16,10 +16,10 @@
         </div>
         <div class='contact__form'>
             <form action='{{ route("contact.index") }}' method='POST' autocomplete='off'>
-                <input type='text' name='name' placeholder='Vaše ime i prezime'><br>
-                <input type='email' name='email' placeholder='Vaš email (za odgovor)'><br>
-                <input type='text' name='title' placeholder='Naslov'><br>
-                <textarea name='message' rows='8' placeholder='Poruka'></textarea><br>
+                <input type='text' name='name' placeholder='Vaše ime i prezime' class='{{ $errors->has("name") ? "has-error" : "" }}'><br>
+                <input type='email' name='email' placeholder='Vaš email (za odgovor)' class='{{ $errors->has("email") ? "has-error" : "" }}'><br>
+                <input type='text' name='title' placeholder='Naslov' class='{{ $errors->has("title") ? "has-error" : "" }}'><br>
+                <textarea name='message' rows='8' placeholder='Poruka' class='{{ $errors->has("message") ? "has-error" : "" }}'></textarea><br>
                 {!! Recaptcha::render() !!}
                 {{ csrf_field() }}
                 <input type='submit' value='Pošalji'>

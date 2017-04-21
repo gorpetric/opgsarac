@@ -155,6 +155,44 @@ class ProductsController extends Controller
         return redirect()->route('products.product', $product);
     }
 
+    public function postNewPackage(Request $request, Product $product)
+    {
+        $this->validate($request, [
+            'package' => 'required',
+            'kune' => 'required|integer',
+            'lipe' => 'required|numeric|digits_between:2,2',
+        ]);
+
+        $priceHRK = $request->input('kune') . '.' . $request->input('lipe');
+
+        $product->packages()->create([
+            'package' => $request->input('package'),
+            'priceHRK' => $priceHRK,
+        ]);
+
+        return redirect()->route('products.editProduct', $product);
+    }
+
+    public function getDeletePackage(Product $product, $package_id)
+    {
+        $productPackage = $product->packages()->where('id', $package_id)->first();
+        if(!$productPackage) {
+            notify()->flash('Radnja onemogućena!', 'error', [
+                'timer' => 2000,
+                'noConfirm' => true,
+            ]);
+            return redirect()->route('home');
+        }
+
+        $productPackage->delete();
+
+        notify()->flash('Pakiranje uspješno obrisano', 'success', [
+            'timer' => 2000,
+            'noConfirm' => true,
+        ]);
+        return redirect()->route('products.editProduct', $product);
+    }
+
     protected function generateSlug($inputSlug)
     {
         $slugInit = str_slug($inputSlug);

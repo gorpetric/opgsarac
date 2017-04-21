@@ -29,4 +29,9 @@ class Product extends Model
     {
         return $this->images()->where('id', '<>', $this->mainImage()->id)->get();
     }
+
+    public function packages()
+    {
+        return $this->hasMany('App\ProductPackage', 'product_id');
+    }
 }

@@ -11,6 +11,7 @@
             <a class='{{ setActive("proizvodi") }}' href='{{ route("products.index") }}'>Proizvodi</a>
             <a class='{{ setActive("galerija") }}' href='{{ route("gallery.index") }}'>Galerija</a>
             <a class='{{ setActive("kontakt") }}' href='{{ route("contact.index") }}'>Kontakt</a>
+            <a title='Košarica' class='{{ setActive("kosarica") }} basket' href='{{ route("basket.index") }}'><i class='fa fa-shopping-basket'></i></a>
             @if(Auth::check())
                 @if(Auth::user()->hasRole('Admin'))
                     <a class='{{ setActive("admin") }}' href='{{ route("admin.index") }}'>Admin</a>
