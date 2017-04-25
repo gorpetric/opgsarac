@@ -137,6 +137,14 @@ Route::post('kosarica/osvjezi-pakiranje/{productPackageID}', [
     'uses' => 'BasketController@updateProductPackage',
     'as' => 'basket.updateProductPackage',
 ]);
+Route::get('kosarica/narudzba', [
+    'uses' => 'BasketController@getOrder',
+    'as' => 'basket.order',
+]);
+Route::post('kosarica/narudzba', [
+    'uses' => 'BasketController@postOrder',
+    'as' => 'basket.order',
+]);
 
 // gallery
 Route::get('galerija', [

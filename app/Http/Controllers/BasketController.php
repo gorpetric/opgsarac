@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductPackage;
+use Mail;
 
 class BasketController extends Controller
 {
     private $sessionKey = 'basket_products';
 
-    public function index()
+    private function getBasketItems()
     {
         $basketItems = [];
         $stuff = session($this->sessionKey);
@@ -25,7 +26,29 @@ class BasketController extends Controller
             $basketItems = null;
         }
 
-        return view('basket.index')->with('basketItems', $basketItems);
+        return $basketItems;
+    }
+
+    private function getTotalPrice($basketItems)
+    {
+        $total = 0;
+        if(count($basketItems)) {
+            foreach($basketItems as $item)
+            {
+                $total += $item['productPackage']->priceHRK * $item['quantity'];
+            }
+        }
+        return $total;
+    }
+
+    public function index()
+    {
+        $basketItems = $this->getBasketItems();
+        $total = $this->getTotalPrice($basketItems);
+        return view('basket.index')->with([
+            'basketItems' => $basketItems,
+            'total' => $total,
+        ]);
     }
 
     public function addProductPackage(Request $request, ProductPackage $productPackage)
@@ -100,5 +123,50 @@ class BasketController extends Controller
         session([$this->sessionKey => $currentItemsInSession]);
 
         return redirect()->back();
+    }
+
+    public function getOrder()
+    {
+        $basketItems = $this->getBasketItems();
+
+        if(!count($basketItems)) {
+            return redirect()->route('basket.index');
+        }
+
+        $total = $this->getTotalPrice($basketItems);
+        return view('basket.order')->with([
+            'basketItems' => $basketItems,
+            'total' => $total,
+        ]);
+    }
+
+    public function postOrder(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            //'message' => 'required',
+            'g-recaptcha-response' => 'required|recaptcha',
+        ]);
+
+        $basketItems = $this->getBasketItems();
+        $total = $this->getTotalPrice($basketItems);
+
+        Mail::send('email.order', [
+            'request' => $request->all(),
+            'basketItems' => $basketItems,
+            'total' => $total,
+        ], function($m) use($request) {
+            $m->from('info@opgsarac.hr', 'OPG Sarac - web stranica');
+            $m->to('opgsarac.ck@gmail.com');
+            $m->subject('OPG Sarac - upit za narudžbu proizvoda');
+        });
+
+        session()->forget($this->sessionKey);
+
+        notify()->flash('Zahvaljujemo na Vašem upitu!', 'success', [
+            'text' => 'Povratna informacija ubrzo stiže na Vaš mail.',
+        ]);
+        return redirect()->route('home');
     }
 }
