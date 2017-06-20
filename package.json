@@ -11,9 +11,11 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "browser-sync": "^2.18.12",
+    "browser-sync-webpack-plugin": "^1.1.4",
     "cross-env": "^5.0.1",
     "jquery": "^3.2.1",
-    "laravel-mix": "^0.*",
+    "laravel-mix": "^1.0.2",
     "lodash": "^4.17.4",
     "vue": "^2.3.4"
   }
